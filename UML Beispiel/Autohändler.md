@@ -1,13 +1,13 @@
-# ?? UML Klassendiagramm � Autoh�ndler
+﻿# UML Klassendiagramm – Autohändler
 
-## Oberthema: Autoh�ndler
+## Oberthema: Autohändler
 
 ---
 
-## ?? Klassen
+## Klassen
 
 ### 1. `Kunde`
-> Repr�sentiert Personen, die Autos kaufen oder reservieren m�chten.
+> Repräsentiert Personen, die Autos kaufen oder reservieren möchten.
 
 | Kategorie  | Name            |
 |------------|-----------------|
@@ -20,7 +20,7 @@
 ---
 
 ### 2. `Auto`
-> Repr�sentiert die Fahrzeuge im System.
+> Repräsentiert die Fahrzeuge im System.
 
 | Kategorie  | Name                      |
 |------------|---------------------------|
@@ -34,57 +34,57 @@
 
 ---
 
-### 3. `Autoh�ndler`
-> Repr�sentiert den H�ndler, der Autos verkauft und verwaltet.
+### 3. `Autohändler`
+> Repräsentiert den Händler, der Autos verkauft und verwaltet.
 
 | Kategorie  | Name                   |
 |------------|------------------------|
 | Attribut   | `Name`                 |
 | Attribut   | `Adresse`              |
 | Attribut   | `AnzahlAutos`          |
-| Methode    | `AutoHinzuf�gen()`     |
+| Methode    | `AutoHinzufügen()`     |
 | Methode    | `AutoVerkaufen()`      |
 | Methode    | `AutoListeAnzeigen()`  |
 
 ---
 
-## ?? Beziehungen zwischen den Klassen
+## Beziehungen zwischen den Klassen
 
-| Von          | Zu           | Multiplizit�t        | Beschreibung                                                          |
+| Von          | Zu           | Multiplizität        | Beschreibung                                                          |
 |--------------|--------------|----------------------|-----------------------------------------------------------------------|
-| `Kunde`      | `Auto`       | `1` ?? `0..*`        | Ein Kunde kann mehrere Autos besitzen; ein Auto geh�rt genau einem Besitzer. |
-| `Autoh�ndler`| `Auto`       | `1` ?? `0..*`        | Ein H�ndler kann mehrere Autos besitzen; ein Auto geh�rt genau einem H�ndler (vor dem Verkauf). |
-| `Kunde`      | `Autoh�ndler`| optional             | Ein Kunde interagiert mit einem Autoh�ndler, um Autos zu kaufen oder zu reservieren. |
+| `Kunde`      | `Auto`       | `1` ←→ `0..*`        | Ein Kunde kann mehrere Autos besitzen; ein Auto gehört genau einem Besitzer. |
+| `Autohändler`| `Auto`       | `1` ←→ `0..*`        | Ein Händler kann mehrere Autos besitzen; ein Auto gehört genau einem Händler (vor dem Verkauf). |
+| `Kunde`      | `Autohändler`| optional             | Ein Kunde interagiert mit einem Autohändler, um Autos zu kaufen oder zu reservieren. |
 
 ---
 
-## ?? UML Diagramm (Textdarstellung)
+## UML Diagramm (Textdarstellung)
 
 ```
-???????????????????????          ???????????????????????????
-?       Kunde         ?          ?        Autoh�ndler       ?
-???????????????????????          ???????????????????????????
-? - Name              ?          ? - Name                  ?
-? - Kundennummer      ?          ? - Adresse               ?
-? - Telefonnummer     ?          ? - AnzahlAutos           ?
-???????????????????????          ???????????????????????????
-? + AutoKaufen()      ???????????? + AutoHinzuf�gen()      ?
-? + AutoReservieren() ? optional ? + AutoVerkaufen()       ?
-???????????????????????          ? + AutoListeAnzeigen()   ?
-          ? 1                    ???????????????????????????
-          ?                                  ? 1
-          ? besitzt                          ? verwaltet
-          ? 0..*                             ? 0..*
-???????????????????????????
-?          Auto            ?
-???????????????????????????
-? - Marke                 ?
-? - Modell                ?
-? - Preis                 ?
-? - Baujahr               ?
-???????????????????????????
-? + Starten()             ?
-? + Stoppen()             ?
-? + InformationenAnzeigen()?
-???????????????????????????
+┌─────────────────────┐          ┌─────────────────────────┐
+│       Kunde         │          │        Autohändler       │
+├─────────────────────┤          ├─────────────────────────┤
+│ - Name              │          │ - Name                  │
+│ - Kundennummer      │          │ - Adresse               │
+│ - Telefonnummer     │          │ - AnzahlAutos           │
+├─────────────────────┤          ├─────────────────────────┤
+│ + AutoKaufen()      │◄────────►│ + AutoHinzufügen()      │
+│ + AutoReservieren() │ optional │ + AutoVerkaufen()       │
+└─────────────────────┘          │ + AutoListeAnzeigen()   │
+          │ 1                    └─────────────────────────┘
+          │                                  │ 1
+          │ besitzt                          │ verwaltet
+          ▼ 0..*                             ▼ 0..*
+┌─────────────────────────┐
+│          Auto            │
+├─────────────────────────┤
+│ - Marke                 │
+│ - Modell                │
+│ - Preis                 │
+│ - Baujahr               │
+├─────────────────────────┤
+│ + Starten()             │
+│ + Stoppen()             │
+│ + InformationenAnzeigen()│
+└─────────────────────────┘
 ```
